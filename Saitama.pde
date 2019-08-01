@@ -108,6 +108,6 @@ void draw() {
             waitTime--;
     }
     else {
-        x+=10;
+        x += 10;
     }
 }
