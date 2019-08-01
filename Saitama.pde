@@ -6,7 +6,7 @@ void setup() {
 }
 
 void draw() {
-    // noFill();
+    background(0);
     stroke(0);
     strokeWeight(2);
 
