@@ -1,8 +1,11 @@
 
+int x = -300;
+int waitTime = 10;
 
 void setup() {
     size(425, 414);
     surface.setResizable(true);
+    frameRate(10);
 }
 
 void draw() {
@@ -10,6 +13,8 @@ void draw() {
     stroke(0);
     strokeWeight(2);
 
+    pushMatrix();
+    translate(x, 100);
     /*
      * Cabeza
      */
@@ -94,4 +99,15 @@ void draw() {
      * Retina derecha
      */
     ellipse(240.09406, 135.45847, 3.0, 3.0);
+    popMatrix();
+    
+    if (x == 0) {
+        if (waitTime == 0)
+            x += 10;
+        else
+            waitTime--;
+    }
+    else {
+        x+=10;
+    }
 }
