@@ -37,37 +37,9 @@ class Max extends ImageDraw {
         mano = new MaxMano(this);
     }
 
-    //ejecutar función
-    //primera función: display
     @Override
     public void display() {
         drawImage();
-
-        /*
-        if (y < height-height/4) {
-            scale(1, 1);
-
-            if (mousePressed == true) {
-                image(max3, 0, 0, size, size);
-                audioPlayer.play();
-            } else {
-                image(max2, 0, 0, size, size);
-            }
-
-        } else {
-            scale(1, 1);
-            image(max1, 0, 0, size, size);
-        }
-        */
-
-        /*
-        void keyPressed(){
-          if (key== 'p' || key== 'P') {
-
-            fondo.loop();
-        */
-        // popMatrix();
-
         mano.display();
     }
 }
