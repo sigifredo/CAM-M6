@@ -1,6 +1,6 @@
 
 
-abstract class ImageDraw {
+abstract class ImageDraw implements DrawInterface {
     /**
      * Coordenada X
      */
@@ -29,8 +29,6 @@ abstract class ImageDraw {
     void changeImagePath(String imagePath) {
         image = loadImage(imagePath);
     }
-
-    abstract public void display();
 
     protected void drawImage() {
         pushMatrix();
