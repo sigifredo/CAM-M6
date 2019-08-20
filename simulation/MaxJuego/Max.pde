@@ -34,7 +34,7 @@ class Max extends ImageDraw {
         max2 = loadImage ("max-manito-abajo.png");
         max3 = loadImage ("max-electrocutado.png");
         audioPlayer = new AudioPlayer();
-        mano = new MaxMano();
+        mano = new MaxMano(this);
     }
 
     //ejecutar función
