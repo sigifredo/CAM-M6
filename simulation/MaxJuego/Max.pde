@@ -1,24 +1,7 @@
 
 
 //receta - características
-class Max {
-    /**
-     * Coordenada X
-     */
-    private int x;
-    /**
-     * Coordenada Y
-     */
-    private int y;
-    /**
-     *
-     */
-    private int sz;
-
-    /**
-     * Imagen de max en estado normal.
-     */
-    private PImage max1;
+class Max extends ImageDraw {
     /**
      * Imagen de max con la manito abajo.
      */
@@ -29,47 +12,53 @@ class Max {
     private PImage max3;
 
     /**
+     * Mano de max
+     */
+    MaxMano mano;
+
+    /**
+     *
+     */
+    AudioPlayer audioPlayer;
+
+    /**
      * Constructor
      */
     public Max() {
-        x = int(width/2);
-        y = int(height/2);
-        sz = 200;
-        max1 = loadImage("max.png");
+        super("max.png");
+
+        setX(width/2);
+        setY(height/2);
+        setSize(400);
+
         max2 = loadImage ("max-manito-abajo.png");
         max3 = loadImage ("max-electrocutado.png");
+        audioPlayer = new AudioPlayer();
+        mano = new MaxMano();
     }
 
     //ejecutar función
     //primera función: display
+    @Override
     public void display() {
+        drawImage();
 
-        noCursor();
-        x = mouseX;
-        y = mouseY;
-        fill(255);
-        // ellipse(x,y,sz,sz);
-        //rect(x,y,sz,sz);
-        //tint(100,200,255,111);
-
-        imageMode(CENTER);
-
-        pushMatrix();
-        translate(x, y);
+        /*
         if (y < height-height/4) {
             scale(1, 1);
 
             if (mousePressed == true) {
-                image(max3, 0, 0, sz, sz);
-                cortocircuito.play();
+                image(max3, 0, 0, size, size);
+                audioPlayer.play();
             } else {
-                image(max2, 0, 0, sz, sz);
+                image(max2, 0, 0, size, size);
             }
 
         } else {
             scale(1, 1);
-            image(max1, 0, 0, sz, sz);
+            image(max1, 0, 0, size, size);
         }
+        */
 
         /*
         void keyPressed(){
@@ -77,6 +66,8 @@ class Max {
 
             fondo.loop();
         */
-        popMatrix();
+        // popMatrix();
+
+        mano.display();
     }
 }
