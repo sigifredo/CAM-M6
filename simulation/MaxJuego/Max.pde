@@ -14,7 +14,7 @@ class Max extends ImageDraw {
     /**
      * Mano de max
      */
-    MaxMano mano;
+    // MaxMano mano;
 
     /**
      *
@@ -34,12 +34,19 @@ class Max extends ImageDraw {
         max2 = loadImage ("max-manito-abajo.png");
         max3 = loadImage ("max-electrocutado.png");
         audioPlayer = new AudioPlayer();
-        mano = new MaxMano(this);
+        // mano = new MaxMano(this);
     }
 
     @Override
     public void display() {
         drawImage();
-        mano.display();
+        // mano.display();
+    }
+
+    public void electrocutar() {
+        changeImagePath("max-electrocutado.png");
+    }
+
+    public void matarAlPez() {
     }
 }

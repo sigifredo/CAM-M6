@@ -6,18 +6,22 @@ class MaxMano extends ImageDraw {
      * Referencia al objeto padre.
      */
     private Max max;
+    private boolean moverMano;
 
     public MaxMano(Max max) {
         super("mano.png");
         this.max = max;
+        setX(535);
+        setY(355);
         setSize(180);
+        moverMano = true;
         noCursor();
     }
 
     @Override
     public void display() {
-        generarPosicionAleatoria();
         validarClick();
+        generarPosicionAleatoria();
         drawImage();
     }
 
@@ -26,21 +30,23 @@ class MaxMano extends ImageDraw {
      * Esto se hace para agregar complejidad al juego.
      */
     private void generarPosicionAleatoria() {
-        int nAleatorioX = int(random(-10, 10));
-        int nAleatorioY = int(random(-10, 10));
-        int newX = getX();
-        int newY = getY();
+        if (moverMano) {
+            int nAleatorioX = int(random(-10, 10));
+            int nAleatorioY = int(random(-10, 10));
+            int newX = getX();
+            int newY = getY();
 
-        if (mouseX > 500 && mouseX < 570) {
-            newX = mouseX;
+            if (mouseX > 500 && mouseX < 570) {
+                newX = mouseX;
+            }
+
+            if (mouseY > 330 && mouseY < 400) {
+                newY = mouseY;
+            }
+
+            setX(newX + nAleatorioX);
+            setY(newY + nAleatorioY);
         }
-
-        if (mouseY > 330 && mouseY < 400) {
-            newY = mouseY;
-        }
-
-        setX(newX + nAleatorioX);
-        setY(newY + nAleatorioY);
     }
 
     /**
@@ -49,6 +55,16 @@ class MaxMano extends ImageDraw {
     private void validarClick() {
         if (mousePressed == true) {
             //TODO:
+            if (getX() > 530) {
+                max.electrocutar();
+            }
+            else {
+                max.matarAlPez();
+            }
+            moverMano = false;
+        }
+        else {
+            moverMano = true;
         }
     }
 }
