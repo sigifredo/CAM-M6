@@ -33,9 +33,29 @@ public class Background implements DrawInterface {
             maxMano.display();
         }
         else {
-            fill(0xabffffff);
+            PFont title = createFont("Arial", 40, true);
+            PFont subtitle = createFont("Arial", 20, true);
+            String message;
+            int colorBox;
+
+            if (gameStatus == GameStatus.Losed) {
+                message = "Henry el pez ha muerto\nTodos estamos muy tristes :c";
+                colorBox = 0xab7e191b;
+            }
+            else {
+                message = "La torta está lista, Henry está feliz :)";
+                colorBox = 0xabffffff;
+            }
+
+            textFont(title);
+            fill(colorBox);
             noStroke();
             rect(100, 100, width-200, height-200);
+            fill(0xffffffff);
+            textAlign(CENTER);
+            text(message, width/2, height/2);
+            textFont(subtitle);
+            text("Preciona \"s\" para reiniciar el juego", width/2, (height/2) + 140);
         }
     }
 
