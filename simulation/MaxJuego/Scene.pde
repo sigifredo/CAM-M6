@@ -126,7 +126,8 @@ public class Scene implements DrawInterface {
     }
 
     /**
-     * Validamos si el usuario hace click si ganó o no.
+     * Validamos si el usuario hace click. De ser así
+     * se verifica si ganó o no.
      */
     private void checkClickEvent() {
         if (mousePressed == true) {
