@@ -18,6 +18,7 @@ class AudioPlayer {
 
         if (file.isFile()) {
             player = new SoundFile(this.parent, "groove.mp3");
+            player.amp(1.0);
         }
         else {
             println("El archivo de audio no existe.");
