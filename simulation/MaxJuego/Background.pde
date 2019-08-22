@@ -18,7 +18,7 @@ public class Background implements DrawInterface {
         pared = loadImage("pared.jpg");
         mesa = loadImage("mesa.png");
         max = new Max();
-        maxMano = new MaxMano(max);
+        maxMano = new MaxMano();
     }
 
     @Override
