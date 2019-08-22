@@ -5,7 +5,7 @@
  */
 enum GameStatus { Playing, Winned, Losed };
 
-public class Background implements DrawInterface {
+public class Scene implements DrawInterface {
 
     PImage pared;
     PImage mesa;
@@ -13,7 +13,7 @@ public class Background implements DrawInterface {
     MaxMano maxMano;
     GameStatus gameStatus = GameStatus.Playing;
 
-    public Background() {
+    public Scene() {
         gameStatus = GameStatus.Playing;
         pared = loadImage("pared.jpg");
         mesa = loadImage("mesa.png");

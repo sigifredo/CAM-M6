@@ -1,22 +1,13 @@
-import processing.video.*;
 
-Background background;
-Movie myMovie;
+
+Scene scene;
 
 void setup() {
     size(1280, 720);
-
-    background = new Background();
-    // myMovie = new Movie(this, "emoji-cry.webp");
-    // myMovie.play();
+    scene = new Scene();
 }
 
 void draw() {
     background(0);
-    background.display();
-    // image(myMovie, 0, 0);
-}
-
-void movieEvent(Movie m) {
-    // m.read();
+    scene.display();
 }
