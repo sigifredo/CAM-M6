@@ -11,3 +11,11 @@ void draw() {
     background(0);
     scene.display();
 }
+
+void keyPressed() {
+    scene.keyPressed(key);
+}
+
+void mouseClicked() {
+    scene.mouseClicked();
+}

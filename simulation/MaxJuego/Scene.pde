@@ -44,7 +44,6 @@ public class Scene implements DrawInterface {
 
     @Override
     public void display() {
-        checkClickEvent();
         drawBackground();
 
         max.display();
@@ -126,23 +125,27 @@ public class Scene implements DrawInterface {
     }
 
     /**
+     * Validamos la presión de la tecla "s" para reinicar el juego.
+     */
+    public void keyPressed(int key) {
+        if (gameStatus != GameStatus.Playing && (key == 's' || key == 'S')) {
+            max.resetMax();
+            gameStatus = GameStatus.Playing;
+        }
+    }
+
+    /**
      * Validamos si el usuario hace click. De ser así
      * se verifica si ganó o no.
      */
-    private void checkClickEvent() {
-        if (mousePressed == true) {
+    public void mouseClicked() {
+        if (gameStatus == GameStatus.Playing) {
             if (maxMano.getX() > 530) {
                 max.electrocutar();
                 gameStatus = GameStatus.Losed;
             }
             else {
                 gameStatus = GameStatus.Winned;
-            }
-        }
-        else {
-            if (gameStatus != GameStatus.Playing) {
-                max.resetMax();
-                gameStatus = GameStatus.Playing;
             }
         }
     }
