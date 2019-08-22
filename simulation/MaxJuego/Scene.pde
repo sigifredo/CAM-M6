@@ -8,6 +8,10 @@ enum GameStatus { Playing, Winned, Losed };
 public class Scene implements DrawInterface {
 
     /**
+     * Objeto encargado de controlar el sonido.
+     */
+    AudioPlayer audioPlayer;
+    /**
      * Variable que indica el estado actual del juego.
      */
     GameStatus gameStatus;
@@ -32,14 +36,20 @@ public class Scene implements DrawInterface {
      * Imagen de la pared.
      */
     PImage pared;
+    /**
+     * Referencia al objeto padre
+     */
+    PApplet parent;
 
-    public Scene() {
+    public Scene(PApplet parent) {
+        audioPlayer = new AudioPlayer(parent);
         gameStatus = GameStatus.Playing;
         max = new Max();
         maxMano = new MaxMano();
         mesa = loadImage("mesa.png");
         modalWindow = new ModalWindow();
         pared = loadImage("pared.jpg");
+        this.parent = parent;
     }
 
     @Override
@@ -131,6 +141,7 @@ public class Scene implements DrawInterface {
         if (gameStatus != GameStatus.Playing && (key == 's' || key == 'S')) {
             max.resetMax();
             gameStatus = GameStatus.Playing;
+            audioPlayer.stop();
         }
     }
 
@@ -143,6 +154,7 @@ public class Scene implements DrawInterface {
             if (maxMano.getX() > 530) {
                 max.electrocutar();
                 gameStatus = GameStatus.Losed;
+                audioPlayer.play();
             }
             else {
                 gameStatus = GameStatus.Winned;

@@ -1,17 +1,23 @@
 
 
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
+import processing.sound.SoundFile;
 
 class AudioPlayer {
-    ddf.minim.AudioPlayer player;
+    /**
+     * Reproductor de audio
+     */
+    SoundFile player;
+    /**
+     * Referencia al applet padre
+     */
+    PApplet parent;
 
-    public AudioPlayer() {
+    public AudioPlayer(PApplet parent) {
+        this.parent = parent;
         File file = dataFile("groove.mp3");
 
         if (file.isFile()) {
-            Minim minimPlayer = new Minim(this);
-            player = minimPlayer.loadFile("groove.mp3");
+            player = new SoundFile(this.parent, "groove.mp3");
         }
         else {
             println("El archivo de audio no existe.");
@@ -21,7 +27,14 @@ class AudioPlayer {
 
     void play() {
         if (player != null) {
+            player.stop();
             player.play();
+        }
+    }
+
+    void stop() {
+        if (player != null) {
+            player.stop();
         }
     }
 }

@@ -4,7 +4,7 @@ Scene scene;
 
 void setup() {
     size(1280, 720);
-    scene = new Scene();
+    scene = new Scene(this);
 }
 
 void draw() {
