@@ -20,7 +20,7 @@ class MaxMano extends ImageDraw {
 
     @Override
     public void display() {
-        validarClick();
+        // validarClick();
         generarPosicionAleatoria();
         drawImage();
     }
@@ -52,19 +52,24 @@ class MaxMano extends ImageDraw {
     /**
      * Validamos si el usuario hace click si ganó o no.
      */
+    /*
     private void validarClick() {
         if (mousePressed == true) {
-            //TODO:
             if (getX() > 530) {
                 max.electrocutar();
+                setEnableImageDraw(false);
             }
             else {
-                max.matarAlPez();
+                max.batirTorta();
             }
             moverMano = false;
         }
         else {
-            moverMano = true;
+            if (moverMano == false) {
+                max.resetMax();
+                moverMano = true;
+            }
         }
     }
+    */
 }

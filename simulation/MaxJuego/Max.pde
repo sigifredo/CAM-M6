@@ -47,6 +47,7 @@ class Max extends ImageDraw {
         changeImagePath("max-electrocutado.png");
     }
 
-    public void matarAlPez() {
+    public void resetMax() {
+        changeImagePath("max.png");
     }
 }

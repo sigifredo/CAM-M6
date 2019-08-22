@@ -18,10 +18,16 @@ abstract class ImageDraw implements DrawInterface {
      */
     private PImage image;
 
+    /**
+     * Indica si la imagen se pinta o no;
+     */
+    private boolean enableImageDraw;
+
     public ImageDraw(String imagePath) {
         x = 0;
         y = 0;
         size = 100;
+        enableImageDraw = true;
 
         changeImagePath(imagePath);
     }
@@ -31,14 +37,16 @@ abstract class ImageDraw implements DrawInterface {
     }
 
     protected void drawImage() {
-        pushMatrix();
+        if (enableImageDraw) {
+            pushMatrix();
 
-        imageMode(CENTER);
-        translate(x, y);
+            imageMode(CENTER);
+            translate(x, y);
 
-        image(image, 0, 0, size, size);
+            image(image, 0, 0, size, size);
 
-        popMatrix();
+            popMatrix();
+        }
     }
 
     /* Métodos accesores */
@@ -51,6 +59,9 @@ abstract class ImageDraw implements DrawInterface {
     public int getSize() {
         return size;
     }
+    public boolean getEnableImageDraw() {
+        return enableImageDraw;
+    }
     public void setX(int x) {
         this.x = x;
     }
@@ -59,5 +70,8 @@ abstract class ImageDraw implements DrawInterface {
     }
     public void setSize(int size) {
         this.size = size;
+    }
+    public void setEnableImageDraw(boolean enableImageDraw) {
+        this.enableImageDraw = enableImageDraw;
     }
 }

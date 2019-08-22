@@ -1,12 +1,20 @@
 
 
-class Background implements DrawInterface {
+/**
+ * Enumeración que nos indica el estado del juego.
+ */
+enum GameStatus { Playing, Winned, Losed };
+
+public class Background implements DrawInterface {
+
     PImage pared;
     PImage mesa;
     Max max;
     MaxMano maxMano;
+    GameStatus gameStatus = GameStatus.Playing;
 
     public Background() {
+        gameStatus = GameStatus.Playing;
         pared = loadImage("pared.jpg");
         mesa = loadImage("mesa.png");
         max = new Max();
@@ -15,7 +23,23 @@ class Background implements DrawInterface {
 
     @Override
     public void display() {
+        validarClick();
+        drawBackground();
 
+        max.display();
+
+        if (gameStatus == GameStatus.Playing) {
+            image(mesa, width/2, 405, width/2, height/2);
+            maxMano.display();
+        }
+        else {
+            fill(0xabffffff);
+            noStroke();
+            rect(100, 100, width-200, height-200);
+        }
+    }
+
+    private void drawBackground() {
         pushMatrix();
 
         imageMode(CENTER);
@@ -79,12 +103,27 @@ class Background implements DrawInterface {
         noFill();
         rect(250,365,90,200);
 
-        max.display();
-
-        image(mesa, width/2, 405, width/2, height/2);
-
-        maxMano.display();
-
         popMatrix();
+    }
+
+    /**
+     * Validamos si el usuario hace click si ganó o no.
+     */
+    private void validarClick() {
+        if (mousePressed == true) {
+            if (maxMano.getX() > 530) {
+                max.electrocutar();
+                gameStatus = GameStatus.Losed;
+            }
+            else {
+                gameStatus = GameStatus.Winned;
+            }
+        }
+        else {
+            if (gameStatus != GameStatus.Playing) {
+                max.resetMax();
+                gameStatus = GameStatus.Playing;
+            }
+        }
     }
 }
