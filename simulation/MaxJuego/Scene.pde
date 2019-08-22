@@ -7,23 +7,44 @@ enum GameStatus { Playing, Winned, Losed };
 
 public class Scene implements DrawInterface {
 
-    PImage pared;
-    PImage mesa;
+    /**
+     * Variable que indica el estado actual del juego.
+     */
+    GameStatus gameStatus;
+    /**
+     * Objeto que representa a Max.
+     */
     Max max;
+    /**
+     * Objeto que representa a la mano de Max.
+     */
     MaxMano maxMano;
-    GameStatus gameStatus = GameStatus.Playing;
+    /**
+     * Imagen de la mesa.
+     */
+    PImage mesa;
+    /**
+     * Objeto que representa la ventana modal que muestra el mensaje
+     * al final de juego.
+     */
+    ModalWindow modalWindow;
+    /**
+     * Imagen de la pared.
+     */
+    PImage pared;
 
     public Scene() {
         gameStatus = GameStatus.Playing;
-        pared = loadImage("pared.jpg");
-        mesa = loadImage("mesa.png");
         max = new Max();
         maxMano = new MaxMano();
+        mesa = loadImage("mesa.png");
+        modalWindow = new ModalWindow();
+        pared = loadImage("pared.jpg");
     }
 
     @Override
     public void display() {
-        validarClick();
+        checkClickEvent();
         drawBackground();
 
         max.display();
@@ -33,32 +54,7 @@ public class Scene implements DrawInterface {
             maxMano.display();
         }
         else {
-            PFont title = createFont("Arial", 40, true);
-            PFont subtitle = createFont("Arial", 20, true);
-            String message;
-            int colorBox;
-            int textColor;
-
-            if (gameStatus == GameStatus.Losed) {
-                message = "Henry el pez ha muerto\nTodos estamos muy tristes :c";
-                colorBox = 0xab7e191b;
-                textColor = 0xffffffff;
-            }
-            else {
-                message = "La torta está lista, Henry está feliz :)";
-                colorBox = 0xabffffff;
-                textColor = 0x0;
-            }
-
-            textFont(title);
-            fill(colorBox);
-            noStroke();
-            rect(100, 100, width-200, height-200);
-            fill(textColor);
-            textAlign(CENTER);
-            text(message, width/2, height/2);
-            textFont(subtitle);
-            text("Preciona \"s\" para reiniciar el juego", width/2, (height/2) + 140);
+            modalWindow.display(gameStatus);
         }
     }
 
@@ -132,7 +128,7 @@ public class Scene implements DrawInterface {
     /**
      * Validamos si el usuario hace click si ganó o no.
      */
-    private void validarClick() {
+    private void checkClickEvent() {
         if (mousePressed == true) {
             if (maxMano.getX() > 530) {
                 max.electrocutar();
