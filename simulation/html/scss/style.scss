@@ -3,10 +3,12 @@
 
 $accentColor: #ff6f00;
 $articleBgColor: #afb3b5;
+$articleHoverTime: 0.5s;
 $articleHeaderBgColor: #dfe0e1;
 $bodyBgColor: #374046;
 $buttonBgColor: #607D8B;
-$articleHoverTime: 0.5s;
+$footerBgColor: #212121;
+$footerColor: #bcbcbc;
 
 body {
     background-color: $bodyBgColor;
@@ -24,13 +26,21 @@ header {
         width: 20%;
     }
 }
+footer {
+    background-color: $footerBgColor;
+    color: $footerColor;
+    font-size: 14px;
+    padding: 6em 0 4em;
+    text-align: center;
+}
 h1, h2 {
     font-family: 'Shadows Into Light Two', cursive;
+    text-align: right;
 }
 main {
     display: flex;
     justify-content: space-between;
-    padding: 2em 0;
+    padding: 8em 0;
 
     article {
         background-color: $articleBgColor;
