@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&display=swap');
+
+$accentColor: #ff6f00;
+$articleBgColor: #afb3b5;
+$articleHeaderBgColor: #dfe0e1;
+$bodyBgColor: #374046;
+$buttonBgColor: #607D8B;
+$articleHoverTime: 0.5s;
+
+body {
+    background-color: $bodyBgColor;
+    color: #212121;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+header {
+    background-color: #374046;
+    box-shadow: 0 0 5px lighten(black, 10%);
+    color: #ffffff;
+
+    img {
+        width: 20%;
+    }
+}
+h1, h2 {
+    font-family: 'Shadows Into Light Two', cursive;
+}
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 0;
+
+    article {
+        background-color: $articleBgColor;
+        border-radius: 1rem;
+        box-shadow: 0 0.2em 0.5em lighten(black, 15%);
+        width: 30%;
+
+        a {
+            background-color: $buttonBgColor;
+            border-radius: 0.5em;
+            color: white;
+            margin: 1em 2em;
+            padding: 1em 2em;
+            text-decoration: none;
+
+            &:hover {
+                background-color: $accentColor;
+                transition: background-color $articleHoverTime ease;
+            }
+        }
+        b {
+            font-size: 2em;
+        }
+        h2 {
+            margin: 0px;
+            text-align: center;
+        }
+        p {
+            margin: 2em 0;
+            padding: 0 2em;
+            text-align: justify;
+        }
+        &:hover {
+            box-shadow: 0 0.2em 0.5em darken($accentColor, 40%);
+            transition: box-shadow $articleHoverTime ease;
+
+            a {
+                box-shadow: 0 0.2em 0.5em darken($accentColor, 40%);
+                transition: box-shadow $articleHoverTime ease, background-color $articleHoverTime ease;
+            }
+
+            .header {
+                background-color: lighten($accentColor, 10%);
+                transition: background-color $articleHoverTime, color $articleHoverTime;
+                color: white;
+            }
+        }
+        .button {
+            text-align: center;
+        }
+        .header {
+            background-color: $articleHeaderBgColor;
+            border-radius: 1rem 1rem 0 0;
+        }
+    }
+}
+.content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px auto;
+    max-width: 1000px;
+    width: 100%;
+}
