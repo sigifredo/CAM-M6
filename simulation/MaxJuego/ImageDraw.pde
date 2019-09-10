@@ -14,7 +14,7 @@ abstract class ImageDraw implements DrawInterface {
      */
     private int size;
     /**
-     * Imagen de max en estado normal.
+     * Imagen a dibujar
      */
     private PImage image;
 
