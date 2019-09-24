@@ -1,4 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import 'colors';
+
 body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
     margin: 0px;
     padding: 0px;
+}
+footer {
+    background-color: #1D0708;
+    color: white;
+    font-size: 0.9em;
+    padding: 4em 0;
+    text-align: center;
+
+    .heart {
+        color: lighten(#A81418, 25%);
+    }
+}
+nav {
+    box-shadow: 0 0 10px transparentize($saddleBrown, 0.5);
+    z-index: 100;
+
+    img {
+        height: 80%;
+    }
+    .container {
+        align-items: center;
+        display: flex;
+        height: 100px;
+        justify-content: space-between;
+    }
+    ul {
+        display: flex;
+        li {
+            list-style: none;
+
+            a {
+                color: #707070;
+                font-size: 20px;
+                padding: 1em 1em;
+                text-decoration: none;
+
+                &:hover {
+                    color: #1D0708;
+                }
+            }
+
+            &:first-child {
+                border-right: 1px solid lighten(#707070, 10%);
+            }
+        }
+    }
+}
+section {
+    align-items: center;
+    display: flex;
+    margin: 4em 0;
+
+    .image {
+        text-align: center;
+    }
+    &>div {
+        width: 50%;
+        img {
+            width: 80%;
+        }
+        p {
+            text-align: justify;
+        }
+    }
+}
+.banner {
+    background-attachment: fixed;
+    background-image: url('../assets/imgs/elfen-lied-header.blur.jpg');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+
+    h1 {
+        font-weight: 500;
+        margin: 1em 0;
+    }
+    h1, p {
+        filter: drop-shadow(0 0 7px black);
+    }
+    .container {
+        padding: 3em 0px;
+    }
+}
+.container {
+    margin: 0px auto;
+    max-width: 1000px;
+    width: 100%;
+}
+.video-container {
+    background-color: #707070;
 }
