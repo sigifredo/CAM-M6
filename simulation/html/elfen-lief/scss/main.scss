@@ -14,8 +14,11 @@ footer {
     padding: 4em 0;
     text-align: center;
 
+    p {
+        margin: 1.5em 0;
+    }
     .heart {
-        color: lighten(#A81418, 25%);
+        width: 16px;
     }
 }
 nav {
@@ -96,5 +99,5 @@ section {
     width: 100%;
 }
 .video-container {
-    background-color: #707070;
+    background-color: #f8f9f9;
 }
