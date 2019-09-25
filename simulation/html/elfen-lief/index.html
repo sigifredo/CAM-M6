@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/main.css">
+        <script src="js/main.js"></script>
         <title>Elfen lief</title>
     </head>
     <body>
@@ -42,13 +43,29 @@
                 </div>
             </section>
         </div>
-        <section class="video-container">
-            <video src="assets/videos/opening.mp4"></video>
+        <section class="video-opening">
+            <div class="container">
+                <h2>Lilium</h2>
+                <p><b>Lilium</b> es el tema usado para el opening del anime Elfen Lied. Los autores replicaron varios pasajes bíblicos e himnos religiosos para componer la letra. Aparte tanto en el opening como en el ending se muestran secuencias de imágenes de la protagonista en desnudo.</p>
+                <p>Esto se debe a que usaron las pinturas del pintor austríaco Gustav Klimt cuyas obras están dotadas de una intensa de energía sensual.</p>
+                <p>Kumiko Noma es quien interpreta el tema en la versión original. En la adaptación latina, el tema es interpretado por la banda Ensamble Quimera con colaboración de Maryan MG.</p>
+                <img id="btn-lilium" src="assets/imgs/btn-lilium.png" alt="Lilium">
+            </div>
         </section>
         <footer>
             <img src="assets/imgs/logo-cam.png" alt="CAM - Logo">
             <p>Made width <img class="heart" src="assets/imgs/heart.svg"> by Sigifredo</p>
             <span class="year">2019</span>
         </footer>
+        <div id="lilium-mw" class="modal-window">
+            <section>
+                <a class="close"></a>
+                <span>Lilium</span>
+                <video controls>
+                    <source src="assets/videos/opening.mp4" type="video/mp4">
+                        Tu navegador no soporta la etiqueta "video" de HTML5
+                </video>
+            </section>
+        </div>
     </body>
 </html>
