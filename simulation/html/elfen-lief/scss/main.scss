@@ -187,10 +187,12 @@ section {
 }
 #btn-lilium {
     box-shadow: 0 0 1em $black;
-    transition: box-shadow 0.5s ease-out;
+    filter: grayscale(0.4);
+    transition: box-shadow 0.5s ease-out, filter 0.5s ease-out;
 
     &:hover {
         box-shadow: 0 0 1em #f76b58;
+        filter: grayscale(0);
     }
 }
 .modal-window {
